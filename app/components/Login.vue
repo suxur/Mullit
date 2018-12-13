@@ -3,7 +3,7 @@
     <FlexboxLayout class="content">
       <Image src="~/img/logo@3x.png" stretch="none" class="logo"/>
       <StackLayout class="form">
-        <StackLayout row="0" class="input-field">
+        <StackLayout class="input-field">
           <Label class="label" text="E-Mail"></Label>
           <TextField
             class="input"
@@ -18,7 +18,7 @@
           ></TextField>
           <StackLayout class="hr-light"></StackLayout>
         </StackLayout>
-        <StackLayout row="1" class="input-field">
+        <StackLayout class="input-field">
           <Label class="label" text="Password"></Label>
           <FlexboxLayout justifyContent="space-between">
             <TextField
@@ -42,7 +42,6 @@
           :isEnabled="!processing"
           @tap="submit"
         />
-
         <Button
           v-show="isLoggingIn"
           text="Forgot your password?"

@@ -16,6 +16,7 @@
     background-image: url("~/img/page-background@3x.png");
     background-repeat: no-repeat;
     background-position: bottom;
+    background-size: contain;
 }
 </style>
 

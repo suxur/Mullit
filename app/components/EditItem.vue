@@ -59,14 +59,10 @@
 import moment from "moment";
 
 export default {
+    props: ['item'],
     data() {
         return {
             showDateField: false,
-            item: {
-                name: "",
-                price: "",
-                added: ""
-            },
             date: new Date()
         };
     },

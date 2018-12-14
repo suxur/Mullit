@@ -1,5 +1,5 @@
 <template>
-    <StackLayout>
+    <FlexboxLayout>
         <RadListView
             ref="listView"
             for="item in items"
@@ -39,18 +39,22 @@
                 </GridLayout>
             </v-template>
         </RadListView>
-    </StackLayout>
+    </FlexboxLayout>
 </template>
 
 <script>
 import CircularProgressBar from "./CircularProgressBar";
+import EditItem from "./EditItem";
 
 export default {
     components: { CircularProgressBar },
     props: ["items"],
     methods: {
         onItemTap({ item }) {
-            console.log(`Tapped on ${item.name}`);
+            console.log(`Tapped on ${item.name}`)
+            this.$navigateTo(EditItem, {
+                props: { item }
+            });
         },
         onSwipeStarted({ data, object }) {
             console.log(`Swipe started`);

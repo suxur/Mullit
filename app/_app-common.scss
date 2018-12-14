@@ -6,7 +6,12 @@
     font-family: 'FontAwesome';
 }
 
-.h1, .h2, .h3, .h4, .h5, .h6 {
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
     font-family: 'Cabin';
     font-weight: bold;
 }
@@ -20,8 +25,13 @@
     font-weight: bold;
 }
 
-.hr-light, .hr-dark {
+.hr-light,
+.hr-dark {
     height: 2;
+}
+
+.hr-light {
+    background-color: $white;
 }
 
 .hr-dark {

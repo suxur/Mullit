@@ -6,7 +6,7 @@ import Home from './components/Home'
 import Login from './components/Login'
 
 Vue.use(RadListView)
-Vue.config.silent = false;
+Vue.config.silent = false
 
 new Vue({
     render: h => h('frame', [h(Home)])

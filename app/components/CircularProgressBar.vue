@@ -1,23 +1,42 @@
 <template>
-	<GridLayout :height="height" :width="height">
-		<RadRadialGauge>
-			<RadialScale v-tkRadialGaugeScales startAngle="-90" sweepAngle="360">
-				<ScaleStyle v-tkRadialScaleStyle ticksVisible="false" labelsVisible="false" lineThickness="0">
-				</ScaleStyle>
-
-				<RadialBarIndicator v-tkRadialScaleIndicators minimum="0" maximum="100">
-					<BarIndicatorStyle v-tkRadialBarIndicatorStyle :fillColor="fillBackgroundColor" barWidth="0.25">
-					</BarIndicatorStyle>
-				</RadialBarIndicator>
-
-				<RadialBarIndicator v-tkRadialScaleIndicators minimum="0" :maximum="value" isAnimated="true">
-					<BarIndicatorStyle v-tkRadialBarIndicatorStyle :fillColor="fillColor" barWidth="0.25">
-					</BarIndicatorStyle>
-				</RadialBarIndicator>
-			</RadialScale>
-		</RadRadialGauge>
-		<Label :text="text" :color="textColor" :fontSize="textSize" class="m-x-auto m-y-auto" :marginTop="offset"></Label>
-	</GridLayout>
+    <GridLayout :height="height" :width="height">
+        <RadRadialGauge>
+            <RadialScale v-tkRadialGaugeScales startAngle="-90" sweepAngle="360">
+                <ScaleStyle
+                    v-tkRadialScaleStyle
+                    ticksVisible="false"
+                    labelsVisible="false"
+                    lineThickness="0"
+                ></ScaleStyle>
+                <RadialBarIndicator v-tkRadialScaleIndicators minimum="0" maximum="100">
+                    <BarIndicatorStyle
+                        v-tkRadialBarIndicatorStyle
+                        :fillColor="fillBackgroundColor"
+                        barWidth="0.25"
+                    ></BarIndicatorStyle>
+                </RadialBarIndicator>
+                <RadialBarIndicator
+                    v-tkRadialScaleIndicators
+                    minimum="0"
+                    :maximum="value"
+                    isAnimated="true"
+                >
+                    <BarIndicatorStyle
+                        v-tkRadialBarIndicatorStyle
+                        :fillColor="fillColor"
+                        barWidth="0.25"
+                    ></BarIndicatorStyle>
+                </RadialBarIndicator>
+            </RadialScale>
+        </RadRadialGauge>
+        <Label
+            :text="text"
+            :color="textColor"
+            :fontSize="textSize"
+            class="m-x-auto m-y-auto"
+            :marginTop="offset"
+        ></Label>
+    </GridLayout>
 </template>
 
 <script>
@@ -47,6 +66,3 @@ export default {
     }
 };
 </script>
-
-<style>
-</style>

@@ -32,6 +32,13 @@
     font-weight: bold;
 }
 
+.background {
+    background-image: url("~/img/page-background@3x.png");
+    background-repeat: no-repeat;
+    background-position: bottom;
+    background-size: contain;
+}
+
 .hr-light,
 .hr-dark {
     height: 2;

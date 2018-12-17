@@ -1,6 +1,6 @@
 <template>
     <FlexboxLayout
-        class="content-empty"
+        class="background"
         flexDirection="column"
         alignContent="center"
         alignItems="center"
@@ -10,13 +10,3 @@
         <Label class="h2 m-20" text="Add some items to get started!"></Label>
     </FlexboxLayout>
 </template>
-
-<style lang="scss" scoped>
-.content-empty {
-    background-image: url("~/img/page-background@3x.png");
-    background-repeat: no-repeat;
-    background-position: bottom;
-    background-size: contain;
-}
-</style>
-

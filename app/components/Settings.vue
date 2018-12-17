@@ -1,19 +1,16 @@
 <template>
     <Page class="page">
-        <ActionBar class="action-bar" flat="true">
+        <ActionBar class="action-bar">
             <Label class="action-bar-title" text="Settings"/>
         </ActionBar>
-        <ScrollView>
-        </ScrollView>
+        <ScrollView></ScrollView>
     </Page>
 </template>
 
 <script>
-
 export default {
     data() {
-        return {
-        };
+        return {};
     },
     methods: {}
 };

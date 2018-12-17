@@ -1,39 +1,40 @@
 <template>
     <Page class="page">
-        <ActionBar class="action-bar" flat="true">
-            <ActionItem class="action-item" ios.position="left" @tap="openDrawer">
-                <Button class="btn btn-icon" text.decode="&#xf0c9;" @tap="addItem"></Button>
-            </ActionItem>
+        <ActionBar class="action-bar">
             <Label class="action-bar-title" text="Home"/>
             <ActionItem class="action-item" ios.position="right" @tap="$navigateTo(settingsPage)">
                 <Button class="btn btn-icon" text.decode="&#xf085;"></Button>
             </ActionItem>
         </ActionBar>
-        <RadSideDrawer ref="drawer">
-            <StackLayout ~drawerContent class="sideStackLayout">
-                <StackLayout class="sideTitleStackLayout">
-                    <Label text="Navigation Menu"></Label>
+        <!-- <RadSideDrawer ref="drawer" :gesturesEnabled="false">
+            <StackLayout ~drawerContent class="drawer">
+                <StackLayout class="drawer-header">
+                    <FlexboxLayout class="profile">
+                        <Image src="~/img/no-profile@3x.png" stretch="none" class="profile-image"/>
+                    </FlexboxLayout>
+                    <Label text="suxur@me.com" class="profile-text"></Label>
                 </StackLayout>
-                <StackLayout class="sideStackLayout">
-                    <Label text="Primary" class="sideLabel sideLightGrayLabel"></Label>
-                    <Label text="Social" class="sideLabel"></Label>
-                    <Label text="Promotions" class="sideLabel"></Label>
-                    <Label text="Labels" class="sideLabel sideLightGrayLabel"></Label>
-                    <Label text="Important" class="sideLabel"></Label>
-                    <Label text="Starred" class="sideLabel"></Label>
-                    <Label text="Sent Mail" class="sideLabel"></Label>
-                    <Label text="Drafts" class="sideLabel"></Label>
+                <StackLayout>
+                    <Label text="Your List" class="drawer-label"></Label>
+                    <StackLayout class="divider"></StackLayout>
+                    <Label text="Completed" class="drawer-label"></Label>
+                    <StackLayout class="divider"></StackLayout>
+                    <Label text="Profile" class="drawer-label" @tap="$navigateTo(profilePage)"></Label>
+                    <StackLayout class="divider"></StackLayout>
+                    <Label text="Settings" class="drawer-label" @tap="$navigateTo(settingsPage)"></Label>
+                    <StackLayout class="divider"></StackLayout>
                 </StackLayout>
-                <Label
-                    text="Close Drawer"
-                    color="lightgray"
-                    padding="10"
-                    style="horizontal-align: center"
-                    @tap="onCloseDrawerTap"
-                ></Label>
+                <Button text="Log Out" class="btn btn-danger"></Button>
             </StackLayout>
-            <StackLayout ~mainContent>
-                <DockLayout stretchLastChild="true">
+            <StackLayout ~mainContent> -->
+                <TabView
+                    :selectedIndex="selectedIndex"
+                    iosIconRenderingMode="alwaysOriginal"
+                    tabBackgroundColor="#3c153b"
+                    tabTextColor="#ffffff"
+                >
+  <TabViewItem title="List">
+    <DockLayout stretchLastChild="true">
                     <FlexboxLayout dock="top" class="add-item" height="60" width="100%">
                         <FlexboxLayout class="add-item-left">
                             <StackLayout flexGrow="1">
@@ -50,12 +51,22 @@
                         <HomeEmpty v-else flexGrow="1"/>
                     </FlexboxLayout>
                 </DockLayout>
-            </StackLayout>
-        </RadSideDrawer>
+  </TabViewItem>
+  <TabViewItem title="Completed">
+    <Label text="Content for Tab 2" />
+  </TabViewItem>
+  <TabViewItem title="Settings">
+    <Label text="Content for Tab 2" />
+  </TabViewItem>
+</TabView>
+                
+            <!-- </StackLayout> -->
+        <!-- </RadSideDrawer> -->
     </Page>
 </template>
 
 <script>
+import Profile from "./Profile";
 import Settings from "./Settings";
 import HomeList from "./HomeList";
 import HomeEmpty from "./HomeEmpty";
@@ -68,36 +79,30 @@ export default {
     data() {
         return {
             settingsPage: Settings,
+            profilePage: Profile,
             item: "",
-            // items: []
-            items: [
-                {
-                    name: "MacBook Pro",
-                    price: "$1,500",
-                    created_at: "created 5 days ago"
-                },
-                {
-                    name: "Arkham Horror",
-                    price: "$30",
-                    created_at: "created 5 days ago"
-                },
-                {
-                    name: "Socks",
-                    price: "$15",
-                    created_at: "created 5 days ago"
-                }
-            ]
+            items: [],
+            // items: [
+            //     {
+            //         name: "MacBook Pro",
+            //         price: "$1,500",
+            //         created_at: "created 5 days ago"
+            //     },
+            //     {
+            //         name: "Arkham Horror",
+            //         price: "$30",
+            //         created_at: "created 5 days ago"
+            //     },
+            //     {
+            //         name: "Socks",
+            //         price: "$15",
+            //         created_at: "created 5 days ago"
+            //     }
+            // ],
         };
     },
     mounted() {},
     methods: {
-        openDrawer() {
-            this.$refs.drawer.nativeView.showDrawer();
-        },
-
-        onCloseDrawerTap() {
-            this.$refs.drawer.nativeView.closeDrawer();
-        },
         addItem() {
             if (this.item !== "") {
                 let item = {
@@ -119,6 +124,56 @@ export default {
 // End custom common variables
 
 // Custom styles
+.profile {
+    width: 60;
+    height: 60;
+    border-width: 2;
+    border-color: $white;
+    border-radius: 100;
+    justify-content: center;
+    align-items: center;
+    background-color: $orange;
+
+    &-text {
+        text-align: center;
+        color: $white;
+        font-family: "Cabin";
+        font-weight: bold;
+    }
+}
+
+.btn-danger {
+    margin-top: 25;
+    background-color: $orange;
+}
+
+.drawer {
+    background-color: white;
+
+    &-header {
+        padding: 15;
+        background: url("~/img/drawer-header@3x.png");
+        height: 175;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: bottom;
+    }
+
+    &-label {
+        color: $black;
+        font-size: 20;
+        font-family: "Cabin";
+        margin-top: 15;
+        margin-bottom: 5;
+        margin-left: 15;
+    }
+}
+
+.divider {
+    height: 5;
+    background-color: $light-grey;
+}
+
 .add-item {
     height: 60;
     background-color: $orange;

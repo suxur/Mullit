@@ -10,7 +10,7 @@
             <v-template>
                 <FlexboxLayout class="item">
                     <StackLayout>
-                        <CircularProgressBar :size="100" :progress="30" />
+                        <CircularProgressBar :size="100" :progress="30"/>
                     </StackLayout>
                     <StackLayout>
                         <Label class="item-title" :text="item.name"/>
@@ -51,7 +51,7 @@ export default {
     props: ["items"],
     methods: {
         onItemTap({ item }) {
-            console.log(`Tapped on ${item.name}`)
+            console.log(`Tapped on ${item.name}`);
             this.$navigateTo(EditItem, {
                 props: { item }
             });

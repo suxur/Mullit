@@ -1,6 +1,6 @@
 <template>
     <Page class="page">
-        <ActionBar class="action-bar" flat="true">
+        <ActionBar class="action-bar">
             <Label class="action-bar-title" text="Add Item"/>
         </ActionBar>
         <ScrollView>
@@ -59,7 +59,7 @@
 import moment from "moment";
 
 export default {
-    props: ['item'],
+    props: ["item"],
     data() {
         return {
             showDateField: false,

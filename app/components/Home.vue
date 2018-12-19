@@ -1,86 +1,45 @@
 <template>
-    <Page class="page">
-        <ActionBar class="action-bar">
-            <Label class="action-bar-title" text="Home"/>
-            <ActionItem class="action-item" ios.position="right" @tap="$navigateTo(settingsPage)">
-                <Button class="btn btn-icon" text.decode="&#xf085;"></Button>
-            </ActionItem>
-        </ActionBar>
-        <!-- <RadSideDrawer ref="drawer" :gesturesEnabled="false">
-            <StackLayout ~drawerContent class="drawer">
-                <StackLayout class="drawer-header">
-                    <FlexboxLayout class="profile">
-                        <Image src="~/img/no-profile@3x.png" stretch="none" class="profile-image"/>
-                    </FlexboxLayout>
-                    <Label text="suxur@me.com" class="profile-text"></Label>
-                </StackLayout>
-                <StackLayout>
-                    <Label text="Your List" class="drawer-label"></Label>
-                    <StackLayout class="divider"></StackLayout>
-                    <Label text="Completed" class="drawer-label"></Label>
-                    <StackLayout class="divider"></StackLayout>
-                    <Label text="Profile" class="drawer-label" @tap="$navigateTo(profilePage)"></Label>
-                    <StackLayout class="divider"></StackLayout>
-                    <Label text="Settings" class="drawer-label" @tap="$navigateTo(settingsPage)"></Label>
-                    <StackLayout class="divider"></StackLayout>
-                </StackLayout>
-                <Button text="Log Out" class="btn btn-danger"></Button>
-            </StackLayout>
-            <StackLayout ~mainContent> -->
-                <TabView
-                    :selectedIndex="selectedIndex"
-                    iosIconRenderingMode="alwaysOriginal"
-                    tabBackgroundColor="#3c153b"
-                >
-  <TabViewItem title="List">
-    <DockLayout stretchLastChild="true">
-                    <FlexboxLayout dock="top" class="add-item" height="60" width="100%">
-                        <FlexboxLayout class="add-item-left">
-                            <StackLayout flexGrow="1">
-                                <TextField hint="I wish I had..." class="input" v-model="item"></TextField>
-                                <StackLayout class="hr"></StackLayout>
-                            </StackLayout>
-                        </FlexboxLayout>
-                        <FlexboxLayout class="add-item-right">
-                            <Button class="btn btn-icon" text.decode="&#xf067;" @tap="addItem"></Button>
-                        </FlexboxLayout>
-                    </FlexboxLayout>
-                    <FlexboxLayout dock="top">
-                        <HomeList v-if="items.length > 0" :items="items"/>
-                        <HomeEmpty v-else flexGrow="1"/>
-                    </FlexboxLayout>
-                </DockLayout>
-  </TabViewItem>
-  <TabViewItem title="Completed">
-    <Label text="Content for Tab 2" />
-  </TabViewItem>
-  <TabViewItem title="Settings">
-    <Label text="Content for Tab 2" />
-  </TabViewItem>
-</TabView>
-                
-            <!-- </StackLayout> -->
-        <!-- </RadSideDrawer> -->
+        <Page
+        class="page"
+        actionBarHidden="true"
+        backgroundSpanUnderStatusBar="true"
+        statusBarStyle="light"
+    >
+        <GridLayout rows="*, auto" columns="*, *, *">
+            <component v-for="component in components" :key="component" v-show="component === active" :is="component" row="0" col="0" colSpan="3"/>
+                <!-- <HomeList v-if="items.length > 0" :items="items"/>
+                <HomeEmpty v-else flexGrow="1"/> -->
+            <Button :class="tabButtonClasses('List')" text.decode="&#xf0c9;" row="1" col="0" @tap="active = 'List'"></Button>
+            <Button :class="tabButtonClasses('Completed')" text.decode="&#xf14a;" row="1" col="1" @tap="active = 'Completed'"></Button>
+            <Button :class="tabButtonClasses('Settings')" text.decode="&#xf013;" row="1" col="2" @tap="active = 'Settings'"></Button>
+        </GridLayout>
     </Page>
 </template>
 
 <script>
 import Profile from "./Profile";
 import Settings from "./Settings";
-import HomeList from "./HomeList";
-import HomeEmpty from "./HomeEmpty";
+import List from "./List";
+import Completed from "./Completed";
 
 export default {
     components: {
-        HomeList,
-        HomeEmpty
+        List,
+        Completed,
+        Settings,
     },
     data() {
         return {
+            active: 'Completed',
+            components: [
+                'List',
+                'Completed',
+                'Settings'
+            ],
             settingsPage: Settings,
             profilePage: Profile,
             item: "",
-            items: [],
+            items: []
             // items: [
             //     {
             //         name: "MacBook Pro",
@@ -99,6 +58,15 @@ export default {
             //     }
             // ],
         };
+    },
+    computed: {
+        tabButtonClasses() {
+            return component => ({
+                fas: true,
+                'btn-tab': true,
+                'is-active': component === this.active
+            })
+        }
     },
     mounted() {},
     methods: {
@@ -123,6 +91,27 @@ export default {
 // End custom common variables
 
 // Custom styles
+// Tab text color #BFA3BE
+// Tab active text color white
+// Tab active button color #8C3F8A
+
+.btn-tab {
+    // background-color: $purple;
+    color: #BFA3BE;
+    font-size: 20;
+    padding: 10;
+    margin: 20;
+
+}
+
+    .is-active {
+        background-color: #8C3F8A;
+        color: $white;
+        font-size: 20;
+        border-radius: 10;
+    }
+
+
 .profile {
     width: 60;
     height: 60;
@@ -173,34 +162,7 @@ export default {
     background-color: $light-grey;
 }
 
-.add-item {
-    height: 60;
-    background-color: $orange;
-    flex-direction: row;
 
-    &-left {
-        flex: 1;
-        justify-content: center;
-        align-content: center;
-        align-items: center;
-        padding-left: 15;
 
-        .input {
-            color: $white;
-            font-family: "Cabin";
-            padding: 5;
-            placeholder-color: $orange-light;
-        }
-    }
 
-    &-right {
-        justify-content: flex-end;
-        align-content: center;
-    }
-}
-
-.hr {
-    height: 2;
-    background-color: $white;
-}
 </style>

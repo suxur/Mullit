@@ -6,6 +6,25 @@
     font-family: 'FontAwesome';
 }
 
+.far {
+    font-family: 'Font Awesome 5 Free', 'fa-regular-400';
+    font-weight: 400; 
+}
+
+.fab {
+    font-family: 'Font Awesome 5 Brands', 'fa-brands-400';
+    font-weight: 400; 
+}
+
+.fas {
+    font-family: 'Font Awesome 5 Free', 'fa-solid-900';
+    font-weight: 900; 
+}
+
+.page {
+    background-color: $purple;
+}
+
 @each $percentage in 5, 10, 15, 20, 25 {
     .dbg-#{$percentage} {
         background-color: lighten(green, $percentage);
@@ -24,6 +43,7 @@
 }
 
 .background {
+    background-color: $white;
     background-image: url("~/img/page-background@3x.png");
     background-repeat: no-repeat;
     background-position: bottom;

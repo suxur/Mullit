@@ -36,11 +36,11 @@
                                 :secure="isSecure"
                                 v-model="user.password"
                                 :returnKeyType="isLoggingIn ? 'done' : 'next'"
-                                @returnPress="focusConfirmPassword"
+                                @returnPress="focusPasswordConfirm"
                             ></TextField>
                             <Button
                                 :text="isSecureIcon"
-                                class="fa btn-secure"
+                                class="fas btn-secure"
                                 @tap="isSecure = !isSecure"
                             />
                         </FlexboxLayout>
@@ -94,7 +94,9 @@ export default {
     methods: {
         submit() {},
         forgotPassword() {},
-        toggleForm() {}
+        toggleForm() {},
+        focusPassword() {},
+        focusPasswordConfirm() {}
     }
 };
 </script>
@@ -118,6 +120,7 @@ export default {
     justify-content: space-between;
     align-items: center;
 }
+
 
 .logo {
     margin-top: 50;

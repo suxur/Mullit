@@ -1,0 +1,26 @@
+.btn {
+    font-family: 'Cabin';
+    font-weight: bold;
+    font-size: 20;
+    border-radius: $border-radius;
+    margin: 0;
+
+    &-icon {
+        font-family: 'FontAwesome';
+        margin: 0;
+    }
+
+    &-primary {
+        background-color: $green;
+    }
+
+    &-secure {
+        color: $white;
+        font-size: 18;
+    }
+
+    &-outline {
+        color: $black;
+        border-color: $black;
+    }
+}

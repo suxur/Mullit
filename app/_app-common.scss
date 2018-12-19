@@ -23,15 +23,6 @@
     font-weight: bold;
 }
 
-.action-bar {
-    background-color: $purple;
-}
-
-.action-bar-title {
-    font-family: 'Cabin';
-    font-weight: bold;
-}
-
 .background {
     background-image: url("~/img/page-background@3x.png");
     background-repeat: no-repeat;
@@ -52,74 +43,6 @@
     background-color: $orange;
 }
 
-.btn {
-    color: $white;
-    font-family: 'Cabin';
-    font-weight: bold;
-    font-size: 20;
-    border-radius: $border-radius;
-
-    &-icon {
-        font-family: 'FontAwesome';
-        margin: 0;
-    }
-
-    &-primary {
-        background-color: $green;
-    }
-
-    &-secure {
-        color: $white;
-        font-size: 18;
-    }
-
-    &-outline {
-        color: $black;
-        border-color: $black;
-    }
-}
-
 .text-bold {
     font-weight: bold;
-}
-
-.form {
-    margin-left: 30;
-    margin-right: 30;
-    flex-grow: 1;
-    vertical-align: middle;
-
-    .input-field {
-        margin-bottom: 25;
-        .input {
-            color: $white;
-            font-family: 'Cabin';
-            padding-left: 5;
-            placeholder-color: $orange-light;
-
-            &:disabled {
-                background-color: white;
-                opacity: 0.5;
-            }
-        }
-
-        .label {
-            font-family: 'Cabin';
-            font-weight: bold;
-            font-size: 20;
-            color: $white;
-            margin-bottom: 5;
-        }
-    }
-}
-
-.form-dark {
-    .input-field {
-        .label {
-            color: $black;
-        }
-        .input {
-            color: $black;
-        }
-    }
 }

@@ -31,7 +31,6 @@
                     :selectedIndex="selectedIndex"
                     iosIconRenderingMode="alwaysOriginal"
                     tabBackgroundColor="#3c153b"
-                    tabTextColor="#ffffff"
                 >
   <TabViewItem title="List">
     <DockLayout stretchLastChild="true">
